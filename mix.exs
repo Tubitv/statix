@@ -1,7 +1,7 @@
 defmodule Statix.Mixfile do
   use Mix.Project
 
-  @version "1.4.1-rc.1"
+  @version "1.4.1"
   @source_url "https://github.com/Tubitv/statix"
 
   def project() do
