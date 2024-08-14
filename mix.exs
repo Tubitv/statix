@@ -32,6 +32,7 @@ defmodule Statix.Mixfile do
   defp package() do
     %{
       organization: "tubitv",
+      licenses: ["ISC"],
       files: ~w(.formatter.exs mix.exs lib version),
       links: %{
         "GitHub" => @source_url
