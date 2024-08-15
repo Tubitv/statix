@@ -1,14 +1,14 @@
 defmodule Statix.Mixfile do
   use Mix.Project
 
-  @version "1.4.0"
-  @source_url "https://github.com/lexmag/statix"
+  @version "1.4.1"
+  @source_url "https://github.com/Tubitv/statix"
 
   def project() do
     [
       app: :statix,
       version: @version,
-      elixir: "~> 1.3",
+      elixir: "~> 1.12",
       deps: deps(),
 
       # Hex
@@ -22,7 +22,7 @@ defmodule Statix.Mixfile do
   end
 
   def application() do
-    [applications: [:logger]]
+    [extra_applications: [:logger]]
   end
 
   defp description() do
@@ -30,15 +30,18 @@ defmodule Statix.Mixfile do
   end
 
   defp package() do
-    [
-      maintainers: ["Aleksei Magusev", "Andrea Leopardi"],
+    %{
+      organization: "tubitv",
       licenses: ["ISC"],
-      links: %{"GitHub" => @source_url}
-    ]
+      files: ~w(.formatter.exs mix.exs lib version),
+      links: %{
+        "GitHub" => @source_url
+      }
+    }
   end
 
   defp deps() do
-    [{:ex_doc, "~> 0.20.0", only: :dev}]
+    [{:ex_doc, "~> 0.34.2", only: :dev}]
   end
 
   defp docs() do
