@@ -11,29 +11,39 @@ jobs:
     name: Code linting
     uses: lexmag/elixir-actions/.github/workflows/lint.yml@v2
     with:
-      otp-version: "24"
-      elixir-version: "1.14"
+      otp-version: "27"
+      elixir-version: "1.18"
 
   test:
     name: Test suite
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        otp: ["24"]
-        elixir: ["1.14"]
+        otp: ["25", "26"]
+        elixir: ["1.14", "1.15", "1.16", "1.17", "1.18"]
         runtime_config: [true, false]
 
         include:
-          - otp: "20"
-            elixir: "1.6"
+          # OTP 27 works with Elixir 1.17.0+
+          - otp: "27"
+            elixir: "1.17"
+            runtime_config: true
+          - otp: "27" 
+            elixir: "1.17"
+            runtime_config: false
+          - otp: "27"
+            elixir: "1.18"
+            runtime_config: true
+          - otp: "27"
+            elixir: "1.18"
             runtime_config: false
 
     env:
       MIX_ENV: test
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Set up Elixir environment
         uses: erlef/setup-beam@v1
