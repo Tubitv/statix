@@ -20,8 +20,8 @@ jobs:
 
     strategy:
       matrix:
-        otp: ["24"]
-        elixir: ["1.14"]
+        otp: ["24", "25", "26", "27"]
+        elixir: ["1.14", "1.15", "1.16", "1.17", "1.18"]
         runtime_config: [true, false]
 
         include:
@@ -33,7 +33,7 @@ jobs:
       MIX_ENV: test
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Set up Elixir environment
         uses: erlef/setup-beam@v1
