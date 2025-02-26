@@ -20,13 +20,23 @@ jobs:
 
     strategy:
       matrix:
-        otp: ["24", "25", "26", "27"]
+        otp: ["25", "26"]
         elixir: ["1.14", "1.15", "1.16", "1.17", "1.18"]
         runtime_config: [true, false]
 
         include:
-          - otp: "20"
-            elixir: "1.6"
+          # OTP 27 works with Elixir 1.17.0+
+          - otp: "27"
+            elixir: "1.17"
+            runtime_config: true
+          - otp: "24" 
+            elixir: "1.17"
+            runtime_config: false
+          - otp: "27"
+            elixir: "1.18"
+            runtime_config: true
+          - otp: "27"
+            elixir: "1.18"
             runtime_config: false
 
     env:
